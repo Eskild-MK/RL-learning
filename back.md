@@ -1,5 +1,7 @@
 # 梯度反向传播
 
+https://pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html
+
 ```python
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
@@ -69,6 +71,41 @@ print(grad[0])
 >>>tensor(7.)
 ```
 
-对于Jacobian矩阵的求导
+然后结合temptest和这篇文章讲清楚：
+
+https://zhuanlan.zhihu.com/p/279758736#:~:text=PyTorch%E6%8F%90%E4%BE%9B%E4%B8%A4
+
+
+
+对于Jacobian矩阵的求导，矩阵求导
+
+看这篇：
+https://zhuanlan.zhihu.com/p/407043909#:~:text=%E5%9C%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0#:~:text=%E5%9C%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0
+
+https://zhuanlan.zhihu.com/p/288541909
+
 
 ![img.png](img.png)
+
+![img_1.png](img_1.png)
+
+https://towardsdatascience.com/pytorch-autograd-understanding-the-heart-of-pytorchs-magic-2686cd94ec95
+
+写代码时常见的语句，每句话的含义解释清楚
+
+```python
+optimizer = torch.optim.SGD(model.parameters(), lr=0.1, momentum=0.9)
+optimizer.zero_grad()
+loss_fn(model(input), target).backward()
+optimizer.step() 
+```
+
+计算图的事情也要讲清楚：
+
+结合这篇https://zhuanlan.zhihu.com/p/33378444
+
+然后对于grad_variables参数的理解，看这三篇：
+
+* https://zhuanlan.zhihu.com/p/29923090
+* https://zhuanlan.zhihu.com/p/65609544
+* https://www.cnblogs.com/zhouyang209117/p/11023160.html
